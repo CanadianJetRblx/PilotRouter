@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PilotRouter</title>
+  <link rel="stylesheet" href="/panel.css">
+  <script type="module" src="/panel.js"></script>
+</head>
+<body>
+  <main>
+    <header class="masthead">
+      <div><h1>PilotRouter</h1><p>Route API requests through Ropilot Studio.</p></div>
+      <div class="badge" id="state" role="status">Checking…</div>
+    </header>
+    <aside class="release-banner">My Subscription Models support coming soon</aside>
+    <section class="card">
+      <h2>Connection</h2>
+      <form id="port-form" class="port-form">
+        <label for="port">Local bridge port</label>
+        <div class="joined-field">
+          <span class="port-host" aria-hidden="true">127.0.0.1</span>
+          <input id="port" type="number" min="1" max="65535" step="1" inputmode="numeric" required>
+          <button type="submit">Connect</button>
+        </div>
+        <p class="field-hint">Connect to a PilotRouter instance already running on that port.</p>
+      </form>
+      <div class="actions">
+        <button type="button" id="refresh">Check connection</button>
+        <button type="button" data-route="/studio/open">Open Studio</button>
+        <button type="button" data-route="/api/start" class="primary">Start API</button>
+        <button type="button" data-route="/api/pause">Pause API</button>
+      </div>
+      <p class="notice" id="notice" role="status"></p>
+      <ul id="routes" hidden></ul>
+    </section>
+    <section class="card">
+      <h2>Test a request</h2>
+      <dl>
+        <div><dt>Base URL</dt><dd><code id="url"></code></dd></div>
+        <div><dt>API key</dt><dd id="api-auth">Checking…</dd></div>
+      </dl>
+      <form id="test">
+        <div class="form-grid">
+          <div>
+            <label for="model">Model</label>
+            <div class="select-field"><select id="model"><option value="ropilot-credits">Route default</option></select></div>
+          </div>
+          <div>
+            <label for="thinking">Thinking</label>
+            <div class="select-field">
+              <select id="thinking" aria-describedby="thinking-hint">
+                <option value="">Use Studio setting</option>
+                <option value="none">None</option>
+                <option value="minimal">Minimal</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+                <option value="xhigh">Extra high</option>
+                <option value="max">Max</option>
+                <option value="ultra">Ultra</option>
+              </select>
+            </div>
+            <p class="field-hint" id="thinking-hint">Available levels depend on your model and plan.</p>
+          </div>
+          <div>
+            <label for="preset">Prompt preset</label>
+            <div class="select-field"><select id="preset"><option value="">None</option></select></div>
+          </div>
+        </div>
+        <label for="prompt">Prompt</label>
+        <textarea id="prompt" rows="3" maxlength="60000">Reply with OK. Do not edit the project or run tools.</textarea>
+        <div class="actions">
+          <button class="primary">Send prompt</button>
+          <label class="check">
+            <input type="checkbox" id="stream" checked>
+            <span class="switch-track" aria-hidden="true"></span>
+            Stream reply
+          </label>
+        </div>
+      </form>
+      <p class="notice" id="test-notice" role="status"></p>
+      <pre id="reply" aria-live="polite" hidden></pre>
+      <p id="usage" role="status"></p>
+    </section>
+    <footer class="footer">
+      <span class="version">v0.2.0</span>
+      <span>Made by <strong>CanadianJet</strong> (lwklostincanada)</span>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "queue_limit": 8,
+  "timeout_ms": 180000,
+  "prompts": {
+    "luau-review": "Review the supplied Luau snippets and give specific, concise suggestions."
+  },
+  "routes": [
+    {
+      "id": "client-a",
+      "key_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "project": "Bridge A",
+      "require_project_key": true,
+      "models": ["ropilot-blaze"],
+      "default_model": "ropilot-blaze",
+      "requests_per_minute": 20,
+      "prompt_ids": ["luau-review"],
+      "allow_tools": true
+    }
+  ]
+}

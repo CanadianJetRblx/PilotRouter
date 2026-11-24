@@ -1,0 +1,139 @@
+@font-face{font-family:Ubuntu;src:url("/fonts/ubuntu-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:Ubuntu;src:url("/fonts/ubuntu-500.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:Ubuntu;src:url("/fonts/ubuntu-700.woff2") format("woff2");font-weight:700;font-display:swap}
+:root{color-scheme:dark;font:16px/1.55 Ubuntu,"Segoe UI",system-ui,sans-serif;color:#edf1f5;background:#101215}
+*{box-sizing:border-box}
+main{width:min(100% - 32px,680px);margin:64px auto}
+.masthead{display:flex;gap:16px;justify-content:space-between;align-items:flex-start}
+h1,h2,p{margin:0}
+h1{font-size:clamp(1.55rem,4.5vw,2.2rem);letter-spacing:-.04em;font-weight:680;line-height:1.15}
+h2{font-size:1.04rem;letter-spacing:-.025em;margin-bottom:16px}
+p,dt{font-size:.9rem;color:#adb7c3}
+.masthead p{margin-top:9px}
+.badge{white-space:nowrap;border:1px solid #343943;padding:5px 9px;border-radius:999px;color:#c7cfd7;font-size:.76rem}
+.badge.live{border-color:#40765a;color:#a0e3b8;background:#153924}
+.release-banner{
+  margin-top:20px;
+  padding:9px 13px;
+  border:1px solid #42566a;
+  border-radius:10px;
+  background:#202b37;
+  color:#d1e9fc;
+  font-size:.88rem;
+}
+.card{padding:24px;margin-top:20px;border:1px solid #30343b;border-radius:14px;background:#191c21}
+label{display:block;margin-bottom:7px;font-size:.86rem;font-weight:500}
+#port,select,.dropdown-trigger,textarea,pre{
+  width:100%;
+  border:1px solid #3c4755;
+  border-radius:10px;
+  background:#12161c;
+  color:inherit;
+  padding:10px 12px;
+  font:inherit;
+  font-size:.92rem;
+}
+#port,select,button{min-height:44px}
+input::placeholder{color:#9ba8b7}
+#port:hover,select:hover,textarea:hover{border-color:#65798d}
+.port-form{margin-bottom:16px}
+.joined-field{display:flex;align-items:center;gap:8px}
+.joined-field input{min-width:0}
+.joined-field button{flex:none}
+.port-host{color:#adb7c3;font:.83rem "Cascadia Mono",Consolas,monospace}
+textarea{display:block;resize:vertical;min-height:108px}
+.actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px}
+button{padding:8px 14px;background:#272f39;color:#edf1f5;border:1px solid #414f5e;border-radius:9px;font:inherit;font-size:.88rem;font-weight:500;cursor:pointer}
+button.primary{background:#a8d9ff;border-color:#a8d9ff;color:#0b1a27;font-weight:650}
+button:hover:not(:disabled){border-color:#8aabc8;background:#313e4d}
+button.primary:hover:not(:disabled){background:#c3e5ff}
+button:disabled{opacity:.55;cursor:wait}
+:focus-visible{outline:2px solid #a8d9ff;outline-offset:2px}
+dl{margin:0 0 18px}
+dl div{display:grid;grid-template-columns:90px 1fr;gap:8px;margin-bottom:6px}
+dd{margin:0;overflow-wrap:anywhere}code,pre{font-family:"Cascadia Mono",Consolas,ui-monospace,monospace}
+.notice:not(:empty),pre{margin:12px 0 0}
+.notice span{
+  display:block;
+  padding:9px 12px;
+  border:1px solid #425468;
+  border-radius:8px;
+  background:#202a35;
+  color:#cbdff1;
+  animation:notice-in 180ms ease-out both;
+}
+.notice[data-tone="success"] span{border-color:#3b7257;background:#1b2d25;color:#b9ebce}
+.notice[data-tone="error"] span{border-color:#845253;background:#352526;color:#ffd3ce}
+@keyframes notice-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){.notice span{animation:none}}
+pre{white-space:pre-wrap;overflow-wrap:anywhere}
+.select-field{position:relative}
+.dropdown-trigger{
+  position:relative;
+  padding-right:34px;
+  text-align:left;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.dropdown-trigger::after{
+  content:"";
+  position:absolute;
+  right:15px;
+  top:50%;
+  width:7px;
+  height:7px;
+  border:solid #9aafc3;
+  border-width:0 2px 2px 0;
+  transform:translateY(-70%) rotate(45deg);
+  pointer-events:none;
+}
+.dropdown-trigger[aria-expanded="true"]{border-color:#8aabc8}
+.dropdown-trigger[aria-expanded="true"]::after{transform:translateY(-20%) rotate(225deg)}
+.dropdown-list{
+  position:absolute;
+  z-index:1;
+  inset:calc(100% + 6px) 0 auto;
+  max-height:15rem;
+  overflow:auto;
+  padding:4px;
+  border:1px solid #46586a;
+  border-radius:10px;
+  background:#202731;
+  box-shadow:0 10px 25px #0008;
+}
+.dropdown-list [role="option"]{
+  padding:8px 10px;
+  border-radius:6px;
+  font-size:.9rem;
+  overflow-wrap:anywhere;
+  cursor:pointer;
+}
+.dropdown-list [aria-selected="true"]{color:#b6dfff;font-weight:700}
+.dropdown-list .active,.dropdown-list [role="option"]:hover{background:#34475b}
+.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:16px}
+.field-hint{margin-top:5px;font-size:.76rem}
+.check{position:relative;display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 8px;margin:0;color:#c8d2dd;cursor:pointer}
+.check input{position:absolute;width:1px;height:1px;opacity:0}
+.switch-track{display:flex;align-items:center;width:34px;height:20px;padding:2px;border:1px solid #718397;border-radius:999px;background:#252d38}
+.switch-track::before{content:"";width:14px;height:14px;border-radius:50%;background:#b7c5d3}
+.check input:checked + .switch-track{justify-content:flex-end;background:#a8d9ff;border-color:#a8d9ff}
+.check input:checked + .switch-track::before{background:#14283b}
+.check input:focus-visible + .switch-track{outline:2px solid #a8d9ff;outline-offset:3px}
+.footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:16px;color:#adb7c3;font-size:.8rem}
+.footer strong{color:#edf1f5;font-weight:500}
+.version{border:1px solid #3c4755;border-radius:999px;padding:2px 9px;font-variant-numeric:tabular-nums}
+#routes{margin:12px 0 0;padding-left:19px;color:#adb7c3;font-size:.88rem}
+#usage:not(:empty){margin-top:9px}
+@media(max-width:560px){
+  main{margin:32px auto}
+  .masthead{flex-wrap:wrap}
+  .card{padding:18px}
+  .form-grid{grid-template-columns:1fr}
+}
+@media(forced-colors:active){
+  .switch-track{display:none}
+  .dropdown-list .active{outline:1px solid Highlight;outline-offset:-1px}
+  .dropdown-list [aria-selected="true"]{color:Highlight}
+  .check input{position:static;width:auto;height:auto;opacity:1}
+}

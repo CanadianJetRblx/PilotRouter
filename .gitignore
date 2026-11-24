@@ -1,0 +1,6 @@
+node_modules/
+.claude-flow/
+.env
+.env.*
+bridge.config.json
+*.log
